@@ -27,7 +27,7 @@ Použijte operátor %.
 */
 function jeSude(int $cislo): bool
 {
-	// TODO: Doplňte řešení
+	return $cislo % 2 === 0;
 }
 
 
@@ -43,7 +43,25 @@ vraťte text: "Nelze dělit nulou"
 */
 function kalkulacka(float $a, float $b, string $operace): float|string
 {
-	// TODO: Doplňte řešení
+	if ($operace === "+") {
+		return $a + $b;
+	}
+
+	if ($operace === "-") {
+		return $a - $b;
+	}
+
+	if ($operace === "*") {
+		return $a * $b;
+	}
+
+	if ($operace === "/") {
+		if ($b === 0) {
+			return "Nelze dělit nulou";
+		}
+	}
+
+	return 0;
 }
 
 
@@ -56,7 +74,17 @@ Nepoužívejte funkci max().
 */
 function nejvetsi(int $a, int $b, int $c): int
 {
-	// TODO: Doplňte řešení
+	$max = $a;
+
+	if ($b > $max) {
+		$max = $b;
+	}
+
+	if ($c > $max) {
+		$max = $c;
+	}
+
+	return $max;
 }
 
 
@@ -69,7 +97,13 @@ pomocí cyklu.
 */
 function soucetDoN(int $n): int
 {
-	// TODO: Doplňte řešení
+	$soucet = 0;
+
+	for ($i = 1; $i <= $n; $i++) {
+		$soucet += $i;
+	}
+
+	return $soucet;
 }
 
 
@@ -85,7 +119,17 @@ Ošetřete záporné číslo.
 */
 function faktorial(int $n): int
 {
-	// TODO: Doplňte řešení
+	if ($n < 0) {
+		return 0;
+	}
+
+	$vysledek = 1;
+
+	for ($i = 1; $i <= $n; $i++) {
+		$vysledek *= $i;
+	}
+
+	return $vysledek;
 }
 
 
@@ -98,7 +142,15 @@ Použijte foreach.
 */
 function pocetSudyChCisel(array $pole): int
 {
-	// TODO: Doplňte řešení
+	$pocet = 0;
+
+	foreach ($pole as $cislo) {
+		if ($cislo % 2 === 0) {
+			$pocet++;
+		}
+	}
+
+	return $pocet;
 }
 
 
@@ -114,7 +166,9 @@ Použijte logické operátory.
 */
 function jePrijat(int $bodyTest, int $bodyUstni): bool
 {
-	// TODO: Doplňte řešení
+	$soucet = $bodyTest + $bodyUstni;
+
+	return $soucet >= 60 && $bodyTest >= 25;
 }
 
 
@@ -132,7 +186,9 @@ Příklad pro 5:
 */
 function nasobilka(int $cislo): void
 {
-	// TODO: Doplňte řešení
+	for ($i = 1; $i <= 10; $i++) {
+		echo $cislo . " x " . $i . " = " . ($cislo * $i) . "<br>";
+	}
 }
 
 
@@ -145,7 +201,13 @@ Nepoužívejte strrev().
 */
 function obratText(string $text): string
 {
-	// TODO: Doplňte řešení
+	$vysledek = "";
+
+	for ($i = strlen($text) - 1; $i >= 0; $i--) {
+		$vysledek .= $text[$i];
+	}
+
+	return $vysledek;
 }
 
 
@@ -160,7 +222,15 @@ Vraťte:
 */
 function zkontrolujTip(int $tajneCislo, int $tip): string
 {
-	// TODO: Doplňte řešení
+	if ($tip === $tajneCislo) {
+		return "Uhodl jsi!";
+	}
+
+	if ($tip < $tajneCislo) {
+		return "Moc malé";
+	}
+
+	return "Moc velké";
 }
 
 
@@ -172,40 +242,43 @@ Zjistěte, zda je číslo prvočíslo.
 */
 function jePrvocislo(int $n): bool
 {
-	// TODO: Doplňte řešení
+	if ($n <= 1) {
+		return false;
+	}
+
+	for ($i = 2; $i < $n; $i++) {
+		if ($n % $i === 0) {
+			return false;
+		}
+	}
+
+	return true;
 }
 
 
-/*
-========================================
-TESTOVACÍ VOLÁNÍ
-(Odkomentujte po dokončení funkcí)
-========================================
 
-// var_dump(jeSude(4));
-// var_dump(jeSude(7));
+ var_dump(jeSude(4));
+var_dump(jeSude(7));
+ var_dump(kalkulacka(10, 5, "+"));
+ var_dump(kalkulacka(10, 0, "/"));
 
-// var_dump(kalkulacka(10, 5, "+"));
-// var_dump(kalkulacka(10, 0, "/"));
+ var_dump(nejvetsi(5, 9, 3));
 
-// var_dump(nejvetsi(5, 9, 3));
+ var_dump(soucetDoN(5));
 
-// var_dump(soucetDoN(5));
+ var_dump(faktorial(5));
 
-// var_dump(faktorial(5));
+ var_dump(pocetSudyChCisel([1,2,3,4,6]));
 
-// var_dump(pocetSudyChCisel([1,2,3,4,6]));
+ var_dump(jePrijat(30, 35));
+ var_dump(jePrijat(20, 40));
 
-// var_dump(jePrijat(30, 35));
-// var_dump(jePrijat(20, 40));
+ nasobilka(5);
 
-// nasobilka(5);
+ var_dump(obratText("PHP"));
 
-// var_dump(obratText("PHP"));
+ var_dump(zkontrolujTip(50, 30));
+ var_dump(zkontrolujTip(50, 50));
 
-// var_dump(zkontrolujTip(50, 30));
-// var_dump(zkontrolujTip(50, 50));
+ var_dump(jePrvocislo(7));
 
-// var_dump(jePrvocislo(7));
-
-*/
